@@ -21,3 +21,11 @@ export const cardData = [
         image: "https://firebasestorage.googleapis.com/v0/b/healthpredict-pro.appspot.com/o/lungcancer-removebg-preview.png?alt=media&token=6f59c1e6-a4e1-43cd-afc0-826267956972",
     }
 ]
+
+export const htmlData = [
+    {
+      Title: '<h1 classname="text-2xl">heyaaa wasuuppp</h1>',
+      content: "<p> hello I'm good you tell</p> <h1> Hello how are you</h1><p> heyy wassup",
+    },
+  ];
+  
