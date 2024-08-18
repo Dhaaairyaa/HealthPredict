@@ -6,7 +6,8 @@ const backgroundImageStyle = {
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
 };
-const Strokeformpage = () => {
+
+const StrokeFormPage = () => {
     return (
         <div style={backgroundImageStyle} className="flex flex-col justify-center items-center pt-20 pb-20 bg-">
             <div className="w-auto border-md mx-auto rounded-xl bg-slate-500 p-20" >
@@ -15,8 +16,8 @@ const Strokeformpage = () => {
                 </h4>
                 <Strokeform></Strokeform>
             </div>
-
         </div>
     )
 }
-export default Strokeformpage;
+
+export default StrokeFormPage;

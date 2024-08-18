@@ -11,7 +11,7 @@ const Footer = () => {
             <div className="flex flex-col space-y-4 items-center justify-center ml-8 w-1/3">
 
                 <label for="message" class="block mb-2 text-2xl font-medium  text-[#1b1818]" >Any Queries ?</label>
-                <textarea id="message" rows="4" className=" block w-full mr-5 text-sm text-white bg-[#292525] rounded-lg border ring-[#1b1818] border-[#1b1818]  placeholder-gray-400 " placeholder="Leave a comment..."></textarea>
+                <textarea id="message" rows="4" className=" block w-full mr-5 text-sm text-white bg-[#292525] rounded-lg border ring-[#1b1818] border-[#1b1818]  placeholder-gray-400 p-3 min-h-[50px]" placeholder="Leave a comment..."></textarea>
 
                 <button href="#" target="blank" className=" mt-10 relative inline-flex items-center px-12 py-3 overflow-hidden text-lg font-medium text-black border-2 border-[#77d5ca] rounded-full hover:text-white group hover:bg-[#77d5ca]">
                     <span className="absolute left-0 block w-full h-0 transition-all bg-[#77d5ca] opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
