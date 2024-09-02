@@ -1,6 +1,17 @@
-import React from "react";
-import { useState } from "react";
-import "../App.css";
+import React, { useState } from "react";
+import {
+  Radio,
+  RadioGroup,
+  FormControlLabel,
+  FormControl,
+  FormLabel,
+  TextField,
+  Button,
+  Container,
+  Box,
+  Alert,
+} from "@mui/material";
+
 const Strokeform = () => {
   const [gender, setSelectedGender] = useState("");
   const [age, setAge] = useState("");
@@ -26,302 +37,191 @@ const Strokeform = () => {
     avg_glucose_level,
     bmi,
   };
+
   const handleSubmit = async () => {
     await fetch("http://127.0.0.1:5000/predict", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(datagathered), // Your JSON data here
+      body: JSON.stringify(datagathered),
     })
-      .then((response) => response.json())
-      .then((data) => {
-        setanswer(data.prediction);
-        console.log("Response:", data);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+        .then((response) => response.json())
+        .then((data) => {
+          setanswer(data.prediction);
+          console.log("Response:", data);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
   };
+
   return (
-    <div>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          handleSubmit();
-        }}
-        prevent
-      >
-        <fieldset >
-          <legend>Gender</legend>
-          <div>
-            <input
-              type="radio"
-              id="Male"
-              name="gender"
-              value={gender}
-              checked={gender === "1"}
-              onChange={() => {
-                setSelectedGender("1");
-
+      <Container >
+        <Box p={4} boxShadow={3} borderRadius={2} mt={4} className={
+            "bg-white bg-opacity-60  shadow-lg rounded-xl"
+        }>
+          <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleSubmit();
               }}
+          >
+            <h4
+                style={{
+                  fontSize: "24px",
+                  fontWeight: "600",
+                  color: "#1a202c",
+                  marginBottom: "20px",
+                  textAlign: "center",
+                }}
+            >
+              Don't Worry, Just Say "All is Well"!
+            </h4>
+
+            <FormControl component="fieldset" fullWidth margin="normal">
+              <FormLabel component="legend">Gender</FormLabel>
+              <RadioGroup
+                  row
+                  value={gender}
+                  onChange={(e) => setSelectedGender(e.target.value)}
+              >
+                <FormControlLabel value="1" control={<Radio />} label="Male" />
+                <FormControlLabel value="0" control={<Radio />} label="Female" />
+              </RadioGroup>
+            </FormControl>
+
+            <TextField
+                label="Age"
+                type="number"
+                value={age}
+                onChange={(e) => setAge(e.target.value)}
+                fullWidth
+                margin="normal"
+                variant="outlined"
             />
-            <label for="Male">Male</label>
 
-            <input
-              type="radio"
-              id="Female"
-              name="gender"
-              value={gender}
-              checked={gender === "0"}
-              onChange={() => {
-                setSelectedGender("0");
-              }}
+            <FormControl component="fieldset" fullWidth margin="normal">
+              <FormLabel component="legend">Hypertension</FormLabel>
+              <RadioGroup
+                  row
+                  value={Hypertension}
+                  onChange={(e) => setHypertension(Number(e.target.value))}
+              >
+                <FormControlLabel value={1} control={<Radio />} label="Yes" />
+                <FormControlLabel value={0} control={<Radio />} label="No" />
+              </RadioGroup>
+            </FormControl>
+
+            <FormControl component="fieldset" fullWidth margin="normal">
+              <FormLabel component="legend">Heart Disease</FormLabel>
+              <RadioGroup
+                  row
+                  value={Heart_disease}
+                  onChange={(e) => setHeart_disease(Number(e.target.value))}
+              >
+                <FormControlLabel value={1} control={<Radio />} label="Yes" />
+                <FormControlLabel value={0} control={<Radio />} label="No" />
+              </RadioGroup>
+            </FormControl>
+
+            <FormControl component="fieldset" fullWidth margin="normal">
+              <FormLabel component="legend">Ever Married</FormLabel>
+              <RadioGroup
+                  row
+                  value={ever_married}
+                  onChange={(e) => setever_married(Number(e.target.value))}
+              >
+                <FormControlLabel value={1} control={<Radio />} label="Yes" />
+                <FormControlLabel value={0} control={<Radio />} label="No" />
+              </RadioGroup>
+            </FormControl>
+
+            <FormControl component="fieldset" fullWidth margin="normal">
+              <FormLabel component="legend">Work Type</FormLabel>
+              <RadioGroup
+                  row
+                  value={work_type}
+                  onChange={(e) => setWorkType(e.target.value)}
+              >
+                <FormControlLabel value="Private" control={<Radio />} label="Private" />
+                <FormControlLabel value="Self-employed" control={<Radio />} label="Self-Employed" />
+                <FormControlLabel value="Govt_job" control={<Radio />} label="Govt Job" />
+              </RadioGroup>
+            </FormControl>
+
+            <FormControl component="fieldset" fullWidth margin="normal">
+              <FormLabel component="legend">Smoking Status</FormLabel>
+              <RadioGroup
+                  row
+                  value={everSmoked}
+                  onChange={(e) => setEverSmoked(e.target.value)}
+              >
+                <FormControlLabel value="formerly smoked" control={<Radio />} label="Formerly Smoked" />
+                <FormControlLabel value="never smoked" control={<Radio />} label="Never Smoked" />
+                <FormControlLabel value="Unknown" control={<Radio />} label="Unknown" />
+              </RadioGroup>
+            </FormControl>
+
+            <FormControl component="fieldset" fullWidth margin="normal">
+              <FormLabel component="legend">Residence Type</FormLabel>
+              <RadioGroup
+                  row
+                  value={Residence_type}
+                  onChange={(e) => setResidence_type(e.target.value)}
+              >
+                <FormControlLabel value="Urban" control={<Radio />} label="Urban" />
+                <FormControlLabel value="Rural" control={<Radio />} label="Rural" />
+              </RadioGroup>
+            </FormControl>
+
+            <TextField
+                label="Average Glucose Level"
+                type="number"
+                value={avg_glucose_level}
+                onChange={(e) => setavg_glucose_level(e.target.value)}
+                fullWidth
+                margin="normal"
+                variant="outlined"
             />
-            <label for="Female">Female</label>
-          </div>
-        </fieldset>
 
-        <div>
-          <label for="age">Age: </label>
-          <input
-            id="age"
-            type="number"
-            value={age}
-            onChange={(e) => setAge(e.target.value)}
-            className="w-[250px] h-[30px] mt-5"
-          ></input>
-        </div>
-
-        <fieldset className="mt-5">
-          <legend>Hypertension</legend>
-          <div>
-            <input
-              type="radio"
-              id="Yes"
-              name="Hypertension"
-              value={Hypertension}
-              checked={Hypertension === 1}
-              onChange={() => {
-                setHypertension(1);
-              }}
+            <TextField
+                label="BMI Level"
+                type="number"
+                value={bmi}
+                onChange={(e) => setAvgBmi(e.target.value)}
+                fullWidth
+                margin="normal"
+                variant="outlined"
             />
-            <label for="Yes">Yes</label>
 
-            <input
-              type="radio"
-              id="No"
-              name="Hypertension"
-              value={Hypertension}
-              checked={Hypertension === 0}
-              onChange={() => {
-                setHypertension(0);
-              }}
-            />
-            <label for="No">No</label>
-          </div>
-        </fieldset>
+            <Box mt={3} display="flex" justifyContent="center">
+              <Button
+                  type="submit"
+                  variant="contained"
+                  fullWidth
+                  size="large"
+                  style={{
+                    background: "#292525",
+                  }}
+              >
+                Submit
+              </Button>
+            </Box>
+          </form>
 
-        <fieldset className="mt-5">
-          <legend>Heart Disease</legend>
-          <div>
-            <input
-              type="radio"
-              id="Yes_HeartDisease"
-              name="HeartDisease"
-              value={Heart_disease}
-              checked={Heart_disease === 1}
-              onChange={() => {
-                setHeart_disease(1);
-              }}
-            />
-            <label for="Yes_HeartDisease">Yes</label>
-
-            <input
-              type="radio"
-              id="No_HeartDisease"
-              name="HeartDisease"
-              value={Heart_disease}
-              checked={Heart_disease === 0}
-              onChange={() => {
-                setHeart_disease(0);
-              }}
-            />
-            <label for="No_HeartDisease">No</label>
-          </div>
-        </fieldset>
-
-        <fieldset className="mt-5">
-          <legend>Ever Married</legend>
-          <div>
-            <input
-              type="radio"
-              id="Yes_married"
-              name="EverMarried"
-              value={ever_married}
-              checked={ever_married === 1}
-              onChange={() => {
-                setever_married(1);
-              }}
-            />
-            <label for="Yes_married">Yes</label>
-
-            <input
-              type="radio"
-              id="No_married"
-              name="EverMarried"
-              value={ever_married}
-              checked={ever_married === 0}
-              onChange={() => {
-                setever_married(0);
-              }}
-            />
-            <label for="No_married">No</label>
-          </div>
-        </fieldset>
-
-        <fieldset className="mt-5">
-          <legend>Work Type</legend>
-          <div>
-            <input
-              type="radio"
-              id="Private"
-              name="JOB_TYPE"
-              value="Private"
-              checked={work_type === "Private"}
-              onChange={() => {
-                setWorkType("Private");
-              }}
-            />
-            <label for="Private">Private</label>
-
-            <input
-              type="radio"
-              id="Self-employed"
-              name="JOB_TYPE"
-              value="Self-employed"
-              checked={work_type === "Self-employed"}
-              onChange={() => {
-                setWorkType("Self-employed");
-              }}
-            />
-            <label for="Self-employed">Self-Employed</label>
-
-            <input
-              type="radio"
-              id="Govt_job"
-              name="JOB_TYPE"
-              value="Govt_job"
-              checked={work_type === "Govt_job"}
-              onChange={() => {
-                setWorkType("Govt_job");
-              }}
-            />
-            <label for="Govt_job">Govt_job</label>
-          </div>
-        </fieldset>
-
-        <fieldset className="mt-5">
-          <legend>Smoking Status</legend>
-          <div>
-            <input
-              type="radio"
-              id="formerly_smoked"
-              name="Smoking_Status"
-              value="formerly smoked"
-              checked={everSmoked === "formerly smoked"}
-              onChange={() => {
-                setEverSmoked("formerly smoked");
-              }}
-            />
-            <label for="formerly_smoked">Formerly Smoked</label>
-
-            <input
-              type="radio"
-              id="never_smoked"
-              name="Smoking_Status"
-              value="never smoked"
-              checked={everSmoked === "never smoked"}
-              onChange={() => {
-                setEverSmoked("never smoked");
-              }}
-            />
-            <label for="never_smoked">Never Smoked</label>
-
-            <input
-              type="radio"
-              id="Unknown"
-              name="Smoking_Status"
-              value="Unknown"
-              checked={everSmoked === "Unknown"}
-              onChange={() => {
-                setEverSmoked("Unknown");
-              }}
-            />
-            <label for="Unknown">Unknown</label>
-          </div>
-        </fieldset>
-
-        <fieldset className="mt-5">
-          <legend>Residence Type</legend>
-          <div>
-            <input
-              type="radio"
-              id="Urban"
-              name="Residence_Type"
-              value="Urban"
-              checked={Residence_type === "Urban"}
-              onChange={() => {
-                setResidence_type("Urban");
-              }}
-            />
-            <label for="Urban">Urban</label>
-
-            <input
-              type="radio"
-              id="Rural"
-              name="Residence_Type"
-              value="Rural"
-              checked={Residence_type === "Rural"}
-              onChange={() => {
-                setResidence_type("Rural");
-              }}
-            />
-            <label for="Rural">Rural</label>
-          </div>
-        </fieldset>
-
-        <label for="Avg_Glucose">Avgerage Glucose Level</label>
-        <input
-          type="Number"
-          className="w-[250px]"
-          id="Avg_Glucose"
-          value={avg_glucose_level}
-          onChange={(e) => setavg_glucose_level(e.target.value)}
-        ></input>
-        <br></br>
-
-        <label for="BMI">BMI LEVEL</label>
-        <input
-          type="Number"
-          className="w-[250px] mt-10"
-          id="BMI"
-          value={bmi}
-          onChange={(e) => setAvgBmi(e.target.value)}
-        ></input>
-
-        <div className="w-[90px] h-[30px] bg-white mt-12 text-center">
-          <input type="submit"></input>
-        </div>
-      </form>
-
-      {answer === 0 && (
-        <div className="w-[200px] h-[40px] bg-green-500 mt-[20px] mr-[200px]">You are safe</div>
-      )}
-      {answer === 1 && (
-        <div className="w-[200px] h-[40px] bg-red">You are at risk</div>
-      )}
-    </div>
+          {answer === 0 && (
+              <Alert severity="success" sx={{ mt: 2 }}>
+                You are safe
+              </Alert>
+          )}
+          {answer === 1 && (
+              <Alert severity="error" sx={{ mt: 2 }}>
+                You are at risk
+              </Alert>
+          )}
+        </Box>
+      </Container>
   );
 };
 
