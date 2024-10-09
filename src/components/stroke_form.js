@@ -39,7 +39,7 @@ const Strokeform = () => {
   };
 
   const handleSubmit = async () => {
-    await fetch("http://127.0.0.1:5000/predict", {
+    await fetch("http://127.0.0.1:5000/predictStroke", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -76,7 +76,7 @@ const Strokeform = () => {
                   textAlign: "center",
                 }}
             >
-              Don't Worry, Just Say "All is Well"!
+              Stroke Prediction
             </h4>
 
             <FormControl component="fieldset" fullWidth margin="normal">

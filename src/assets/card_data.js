@@ -16,7 +16,7 @@ export const cardData = [
         url:"/heartAttackForm"
     },
     {
-        Title: "Lung Cancer Predictor",
+        Title: "Tumor Tissue Predictor",
         Aim: "Early detection, when the cancer is localized and hasn't spread, significantly increases the chances of successful treatment and survival. Five-year survival rates for early-stage lung cancer can be as high as 90%, compared to only 5% for advanced stages",
         Model: "We have achieved a 97% accuracy rate in diagnosing two common types of lung cancer by analyzing tissue sample slides.",
         btn_data: "Predict Now",

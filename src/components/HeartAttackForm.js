@@ -82,7 +82,7 @@ const HeartAttackForm = () => {
                   textAlign: "center",
                 }}
             >
-              Don't Worry, Just Say "All is Well"!
+              Heart Attack Prediction
             </h4>
 
             <FormControl component="fieldset" fullWidth margin="normal">
@@ -122,7 +122,7 @@ const HeartAttackForm = () => {
             </FormControl>
 
             <TextField
-                label="Resting Blood Pressur"
+                label="Resting Blood Pressure"
                 type="number"
                 value={trtbps}
                 onChange={(e) => setTrtbps(e.target.value)}
@@ -148,8 +148,8 @@ const HeartAttackForm = () => {
                   value={fbs}
                   onChange={(e) => setFbs(e.target.value)}
               >
-                <FormControlLabel value="0" control={<Radio />} label="True" />
-                <FormControlLabel value="1" control={<Radio />} label="False" />
+                <FormControlLabel value="1" control={<Radio />} label="True" />
+                <FormControlLabel value="0" control={<Radio />} label="False" />
               </RadioGroup>
             </FormControl>
 
@@ -179,7 +179,7 @@ const HeartAttackForm = () => {
             </FormControl> */}
 
             <TextField
-                label="Exercise-induced angina"
+                label="Maximum Heart Rate Achieved"
                 type="number"
                 value={thalachh}
                 onChange={(e) => setThalachh(e.target.value)}

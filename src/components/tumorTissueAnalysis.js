@@ -32,6 +32,21 @@ const TumorTissueAnalysis = () => {
     const [symmetry_worst, setSymmetry_worst] = useState("");
     const [fractal_dimension_worst, setFractal_dimension_worst] = useState("");
     const [answer,setanswer] = useState(null);
+    // make state for these 'symmetry_mean', 'fractal_dimension_mean','radius_se', 'texture_se', 'perimeter_se', 'area_se', 'smoothness_se','compactness_se', 'concavity_se', 'concave points_se', 'symmetry_se','fractal_dimension_se', 'radius_worst'
+    const [symmetry_mean, setSymmetry_mean] = useState("");
+    const [fractal_dimension_mean, setFractal_dimension_mean] = useState("");
+    const [radius_se, setRadius_se] = useState("");
+    const [texture_se, setTexture_se] = useState("");
+    const [perimeter_se, setPerimeter_se] = useState("");
+    const [area_se, setArea_se] = useState("");
+    const [smoothness_se, setSmoothness_se] = useState("");
+    const [compactness_se, setCompactness_se] = useState("");
+    const [concavity_se, setConcavity_se] = useState("");
+    const [concave_points_se, setConcave_points_se] = useState("");
+    const [symmetry_se, setSymmetry_se] = useState("");
+    const [fractal_dimension_se, setFractal_dimension_se] = useState("");
+    const [radius_worst, setRadius_worst] = useState("");
+    
 
   const datagathered = {
     diagnosis,
@@ -43,6 +58,20 @@ const TumorTissueAnalysis = () => {
     compactness_mean,
     concavity_mean,
     concave_points_mean,
+    // make similar form fields for these 'symmetry_mean', 'fractal_dimension_mean','radius_se', 'texture_se', 'perimeter_se', 'area_se', 'smoothness_se','compactness_se', 'concavity_se', 'concave points_se', 'symmetry_se','fractal_dimension_se', 'radius_worst'
+    symmetry_mean,
+    fractal_dimension_mean,
+    radius_se,
+    texture_se,
+    perimeter_se,
+    area_se,
+    smoothness_se,
+    compactness_se,
+    concavity_se,
+    concave_points_se,
+    symmetry_se,
+    fractal_dimension_se,
+    radius_worst,
     texture_worst,
     perimeter_worst,
     area_worst,
@@ -52,11 +81,13 @@ const TumorTissueAnalysis = () => {
     concave_points_worst,
     symmetry_worst,
     fractal_dimension_worst,
+    
+
 
   };
 
   const handleSubmit = async () => {
-    await fetch("http://127.0.0.1:5000/tumorTissueAnalysis", {
+    await fetch("http://127.0.0.1:5000/predictTumorTissue", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -93,7 +124,7 @@ const TumorTissueAnalysis = () => {
                   textAlign: "center",
                 }}
             >
-              Don't Worry, Just Say "All is Well"!
+              Tumor Tissue Analysis
             </h4>
 
             <FormControl component="fieldset" fullWidth margin="normal">
@@ -103,11 +134,13 @@ const TumorTissueAnalysis = () => {
                   value={diagnosis}
                   onChange={(e) => setDiagnosis(e.target.value)}
               >
-                <FormControlLabel value="M" control={<Radio />} label="Malignant" />
-                <FormControlLabel value="B" control={<Radio />} label="Benign" />
+                <FormControlLabel value="0" control={<Radio />} label="Malignant" />
+                <FormControlLabel value="1" control={<Radio />} label="Benign" />
               </RadioGroup>
             </FormControl>
 
+           <div className="flex flex-row space-x-5">
+            <div>
             <TextField
                 label="Radius Mean"
                 type="number"
@@ -189,6 +222,135 @@ const TumorTissueAnalysis = () => {
                 variant="outlined"
             />
 
+            {/* // make similar form fields for these 'symmetry_mean', 'fractal_dimension_mean','radius_se', 'texture_se', 'perimeter_se', 'area_se', 'smoothness_se','compactness_se', 'concavity_se', 'concave points_se', 'symmetry_se','fractal_dimension_se', 'radius_worst' */}
+            <TextField
+                label="Symmetry Mean"
+                type="number"
+                value={symmetry_mean}
+                onChange={(e) => setSymmetry_mean(e.target.value)}
+                fullWidth
+                margin="normal"
+                variant="outlined"
+            />
+            <TextField
+                label="Fractal Dimension Mean"
+                type="number"
+                value={fractal_dimension_mean}
+                onChange={(e) => setFractal_dimension_mean(e.target.value)}
+                fullWidth
+                margin="normal"
+                variant="outlined"
+            />
+
+            <TextField
+                label="Radius Se"
+                type="number"
+                value={radius_se}
+                onChange={(e) => setRadius_se(e.target.value)}
+                fullWidth
+                margin="normal"
+                variant="outlined"
+            />
+            <TextField
+                label="Texture Se"
+                type="number"
+                value={texture_se}
+                onChange={(e) => setTexture_se(e.target.value)}
+                fullWidth
+                margin="normal"
+                variant="outlined"
+            />
+
+            <TextField
+                label="Perimeter Se"
+                type="number"
+                value={perimeter_se}
+                onChange={(e) => setPerimeter_se(e.target.value)}
+                fullWidth
+                margin="normal"
+                variant="outlined"
+            />
+
+            <TextField
+                label="Area Se"
+                type="number"
+                value={area_se}
+                onChange={(e) => setArea_se(e.target.value)}
+                fullWidth
+                margin="normal"
+                variant="outlined"
+            />
+
+            <TextField
+                label="Smoothness Se"
+                type="number" 
+                value={smoothness_se}
+                onChange={(e) => setSmoothness_se(e.target.value)}
+                fullWidth
+                margin="normal"
+                variant="outlined"
+            />
+            </div>
+            <div>
+            <TextField
+                label="Compactness Se"
+                type="number"
+                value={compactness_se}
+                onChange={(e) => setCompactness_se(e.target.value)}
+                fullWidth
+                margin="normal"
+                variant="outlined"
+            />
+
+            <TextField
+                label="Concavity Se"
+                type="number"
+                value={concavity_se}
+                onChange={(e) => setConcavity_se(e.target.value)}
+                fullWidth
+                margin="normal"
+                variant="outlined"
+            />
+
+            <TextField
+                label="Concave Points Se"
+                type="number"
+                value={concave_points_se}
+                onChange={(e) => setConcave_points_se(e.target.value)}
+                fullWidth
+                margin="normal"
+                variant="outlined"
+            />
+
+            <TextField
+                label="Symmetry Se"
+                type="number"
+                value={symmetry_se}
+                onChange={(e) => setSymmetry_se(e.target.value)}
+                fullWidth
+                margin="normal"
+                variant="outlined"
+            />
+
+            <TextField
+                label="Fractal Dimension Se"
+                type="number"
+                value={fractal_dimension_se}
+                onChange={(e) => setFractal_dimension_se(e.target.value)}
+                fullWidth
+                margin="normal"
+                variant="outlined"
+            />
+
+            <TextField
+                label="Radius Worst"
+                type="number"
+                value={radius_worst}
+                onChange={(e) => setRadius_worst(e.target.value)}
+                fullWidth
+                margin="normal"
+                variant="outlined"
+            />
 
 
             <TextField
@@ -282,6 +444,10 @@ const TumorTissueAnalysis = () => {
                 margin="normal"
                 variant="outlined"
             />
+            </div>
+           </div>
+
+            
 
 
             <Box mt={3} display="flex" justifyContent="center">
