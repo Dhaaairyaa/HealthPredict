@@ -219,7 +219,7 @@ const HeartAttackForm = () => {
               >
                 <FormControlLabel value="0" control={<Radio />} label="Upsloping" />
                 <FormControlLabel value="1" control={<Radio />} label="Flat" />
-                <FormControlLabel value="1" control={<Radio />} label="Downsloping" />
+                <FormControlLabel value="2" control={<Radio />} label="Downsloping" />
               </RadioGroup>
             </FormControl>
 
