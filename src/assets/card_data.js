@@ -21,7 +21,7 @@ export const cardData = [
         Model: "We have achieved a 97% accuracy rate in diagnosing two common types of lung cancer by analyzing tissue sample slides.",
         btn_data: "Predict Now",
         image: "https://firebasestorage.googleapis.com/v0/b/healthpredict-pro.appspot.com/o/lungcancer-removebg-preview.png?alt=media&token=6f59c1e6-a4e1-43cd-afc0-826267956972",
-        url:"/cancerForm"
+        url:"/tumorTissueForm"
     }
 ]
 

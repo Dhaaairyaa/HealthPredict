@@ -12,7 +12,7 @@ import {
   Alert,
 } from "@mui/material";
 
-const tumorTissueAnalysis = () => {
+const TumorTissueAnalysis = () => {
     const [diagnosis, setDiagnosis] = useState("");
     const [radius_mean, setRadius_mean] = useState("");
     const [texture_mean, setTexture_mean] = useState("");
@@ -56,7 +56,7 @@ const tumorTissueAnalysis = () => {
   };
 
   const handleSubmit = async () => {
-    await fetch("http://127.0.0.1:5000/predictHeartAttack", {
+    await fetch("http://127.0.0.1:5000/tumorTissueAnalysis", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -97,170 +97,192 @@ const tumorTissueAnalysis = () => {
             </h4>
 
             <FormControl component="fieldset" fullWidth margin="normal">
-              <FormLabel component="legend">Gender</FormLabel>
+              <FormLabel component="legend">Diagnosis</FormLabel>
               <RadioGroup
                   row
-                  value={sex}
-                  onChange={(e) => setSex(e.target.value)}
+                  value={diagnosis}
+                  onChange={(e) => setDiagnosis(e.target.value)}
               >
-                <FormControlLabel value="1" control={<Radio />} label="Male" />
-                <FormControlLabel value="0" control={<Radio />} label="Female" />
+                <FormControlLabel value="M" control={<Radio />} label="Malignant" />
+                <FormControlLabel value="B" control={<Radio />} label="Benign" />
               </RadioGroup>
             </FormControl>
 
             <TextField
-                label="Age"
+                label="Radius Mean"
                 type="number"
-                value={age}
-                onChange={(e) => setAge(e.target.value)}
+                value={radius_mean}
+                onChange={(e) => setRadius_mean(e.target.value)}
                 fullWidth
                 margin="normal"
                 variant="outlined"
             />
-
-            <FormControl component="fieldset" fullWidth margin="normal">
-              <FormLabel component="legend">Chest Pain Type</FormLabel>
-              <RadioGroup
-                  row
-                  value={cp}
-                  onChange={(e) => setCp(Number(e.target.value))}
-              >
-                <FormControlLabel value={0} control={<Radio />} label="Low" />
-                <FormControlLabel value={1} control={<Radio />} label="Moderate" />
-                <FormControlLabel value={2} control={<Radio />} label="High" />
-                <FormControlLabel value={3} control={<Radio />} label="Severe" />
-              </RadioGroup>
-            </FormControl>
-
-            <TextField
-                label="Resting Blood Pressur"
-                type="number"
-                value={trtbps}
-                onChange={(e) => setTrtbps(e.target.value)}
-                fullWidth
-                margin="normal"
-                variant="outlined"
-            />
-
-            <TextField
-                label="Cholestrol"
-                type="number"
-                value={chol}
-                onChange={(e) => setChol(e.target.value)}
-                fullWidth
-                margin="normal"
-                variant="outlined"
-            />
-
-            <FormControl component="fieldset" fullWidth margin="normal">
-              <FormLabel component="legend">fasting blood sugar</FormLabel>
-              <RadioGroup
-                  row
-                  value={fbs}
-                  onChange={(e) => setFbs(e.target.value)}
-              >
-                <FormControlLabel value="0" control={<Radio />} label="True" />
-                <FormControlLabel value="1" control={<Radio />} label="False" />
-              </RadioGroup>
-            </FormControl>
-
-
-            <FormControl component="fieldset" fullWidth margin="normal">
-              <FormLabel component="legend">Resting Electrocardiogram Results</FormLabel>
-              <RadioGroup
-                  row
-                  value={restecg}
-                  onChange={(e) => setRestecg(e.target.value)}
-              >
-                <FormControlLabel value="0" control={<Radio />} label="Normal" />
-                <FormControlLabel value="1" control={<Radio />} label="ST-T wave abnormality" />
-              </RadioGroup>
-            </FormControl>
-
-            {/* <FormControl component="fieldset" fullWidth margin="normal">
-              <FormLabel component="legend">Maximum heart rate achieved</FormLabel>
-              <RadioGroup
-                  row
-                  value={thalachh}
-                  onChange={(e) => setThalachh(e.target.value)}
-              >
-                <FormControlLabel value="0" control={<Radio />} label="True" />
-                <FormControlLabel value="1" control={<Radio />} label="False" />
-              </RadioGroup>
-            </FormControl> */}
-
-            <TextField
-                label="Exercise-induced angina"
-                type="number"
-                value={thalachh}
-                onChange={(e) => setThalachh(e.target.value)}
-                fullWidth
-                margin="normal"
-                variant="outlined"
-            />
-
-
-
-            <TextField
-                label="Exercise-induced angina"
-                type="number"
-                value={exng}
-                onChange={(e) => setExng(e.target.value)}
-                fullWidth
-                margin="normal"
-                variant="outlined"
-            />
-
-            <TextField
-                label="oldpeak"
-                type="number"
-                value={oldpeak}
-                onChange={(e) => setOldpeak(e.target.value)}
-                fullWidth
-                margin="normal"
-                variant="outlined"
-            />
-
-            <FormControl component="fieldset" fullWidth margin="normal">
-              <FormLabel component="legend">slope of the peak exercise ST segment</FormLabel>
-              <RadioGroup
-                  row
-                  value={slp}
-                  onChange={(e) => setSlp(e.target.value)}
-              >
-                <FormControlLabel value="0" control={<Radio />} label="Upsloping" />
-                <FormControlLabel value="1" control={<Radio />} label="Flat" />
-                <FormControlLabel value="1" control={<Radio />} label="Downsloping" />
-              </RadioGroup>
-            </FormControl>
-
-
-            <FormControl component="fieldset" fullWidth margin="normal">
-              <FormLabel component="legend">Number of major vessels colored by fluoroscopy</FormLabel>
-              <RadioGroup
-                  row
-                  value={caa}
-                  onChange={(e) => setCaa(e.target.value)}
-              >
-                <FormControlLabel value="0" control={<Radio />} label="0" />
-                <FormControlLabel value="1" control={<Radio />} label="1" />
-                <FormControlLabel value="2" control={<Radio />} label="2" />
-              </RadioGroup>
-            </FormControl>
-
-            <FormControl component="fieldset" fullWidth margin="normal">
-              <FormLabel component="legend">Number of major vessels colored by fluoroscopy</FormLabel>
-              <RadioGroup
-                  row
-                  value={thall}
-                  onChange={(e) => setThall(e.target.value)}
-              >
-                <FormControlLabel value="1" control={<Radio />} label="Normal" />
-                <FormControlLabel value="2" control={<Radio />} label="Fixed defect" />
-                <FormControlLabel value="3" control={<Radio />} label="Reversible defect" />
-              </RadioGroup>
-            </FormControl>
             
+            <TextField
+                label="Texture Mean"
+                type="number"
+                value={texture_mean}
+                onChange={(e) => setTexture_mean(e.target.value)}
+                fullWidth
+                margin="normal"
+                variant="outlined"
+            />
+            
+            <TextField
+                label="Perimeter mean"
+                type="number"
+                value={perimeter_mean}
+                onChange={(e) => setPerimeter_mean(e.target.value)}
+                fullWidth
+                margin="normal"
+                variant="outlined"
+            />
+            
+            <TextField
+                label="Area Mean"
+                type="number"
+                value={area_mean}
+                onChange={(e) => setArea_mean(e.target.value)}
+                fullWidth
+                margin="normal"
+                variant="outlined"
+            />
+            
+            <TextField
+                label="Smoothness Mean"
+                type="number"
+                value={smoothness_mean}
+                onChange={(e) => setSmoothness_mean(e.target.value)}
+                fullWidth
+                margin="normal"
+                variant="outlined"
+            />
+
+            <TextField
+                label="Compactness Mean"
+                type="number"
+                value={compactness_mean}
+                onChange={(e) => setCompactness_mean(e.target.value)}
+                fullWidth
+                margin="normal"
+                variant="outlined"
+            />
+
+
+            <TextField
+                label="Concavity Mean"
+                type="number"
+                value={concavity_mean}
+                onChange={(e) => setConcavity_mean(e.target.value)}
+                fullWidth
+                margin="normal"
+                variant="outlined"
+            />
+
+            <TextField
+                label="Concave Points Mean"
+                type="number"
+                value={concave_points_mean}
+                onChange={(e) => setConcave_points_mean(e.target.value)}
+                fullWidth
+                margin="normal"
+                variant="outlined"
+            />
+
+
+
+            <TextField
+                label="Texture Worst"
+                type="number"
+                value={texture_worst}
+                onChange={(e) => setTexture_worst(e.target.value)}
+                fullWidth
+                margin="normal"
+                variant="outlined"
+            />
+            
+
+            <TextField
+                label="Perimeter Worst"
+                type="number"
+                value={perimeter_worst}
+                onChange={(e) => setPerimeter_worst(e.target.value)}
+                fullWidth
+                margin="normal"
+                variant="outlined"
+            />
+
+            <TextField
+                label="Area Worst"
+                type="number"
+                value={area_worst}
+                onChange={(e) => setArea_worst(e.target.value)}
+                fullWidth
+                margin="normal"
+                variant="outlined"
+            />
+
+            <TextField
+                label="Smoothness Worst"
+                type="number"
+                value={smoothness_worst}
+                onChange={(e) => setSmoothness_worst(e.target.value)}
+                fullWidth
+                margin="normal"
+                variant="outlined"
+            />
+
+            <TextField
+                label="compactness_worst"
+                type="number"
+                value={compactness_worst}
+                onChange={(e) => setCompactness_worst(e.target.value)}
+                fullWidth
+                margin="normal"
+                variant="outlined"
+            />
+
+            <TextField
+                label="Concavity Worst"
+                type="number"
+                value={concavity_worst}
+                onChange={(e) => setConcavity_worst(e.target.value)}
+                fullWidth
+                margin="normal"
+                variant="outlined"
+            />
+
+            <TextField
+                label="Concave points worst"
+                type="number"
+                value={concave_points_worst}
+                onChange={(e) => setConcave_points_worst(e.target.value)}
+                fullWidth
+                margin="normal"
+                variant="outlined"
+            />
+
+            <TextField
+                label="Symmetry Worst"
+                type="number"
+                value={symmetry_worst}
+                onChange={(e) => setSymmetry_worst(e.target.value)}
+                fullWidth
+                margin="normal"
+                variant="outlined"
+            />
+
+
+            <TextField
+                label="Fractal_dimension_worst"
+                type="number"
+                value={fractal_dimension_worst}
+                onChange={(e) => setFractal_dimension_worst(e.target.value)}
+                fullWidth
+                margin="normal"
+                variant="outlined"
+            />
+
 
             <Box mt={3} display="flex" justifyContent="center">
               <Button
@@ -292,4 +314,4 @@ const tumorTissueAnalysis = () => {
   );
 };
 
-export default tumorTissueAnalysis;
+export default TumorTissueAnalysis;
