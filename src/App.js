@@ -6,6 +6,8 @@ import Footer from "./components/footer";
 import StrokeFormPage from "./components/stroke_form_page";
 import ScrollToTop from "./components/scrolltotop";
 
+import HeartAttackForm from './components/HeartAttackForm';
+
 function App() {
   return (
     <Router>
@@ -16,6 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Body />} />
           <Route path="/strokeform" element={<><ScrollToTop /><StrokeFormPage /></>} />
+          <Route path="/heartAttackForm" element={<><ScrollToTop /><HeartAttackForm/></>} />
         </Routes>
 
         <Footer />

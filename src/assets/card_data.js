@@ -5,13 +5,15 @@ export const cardData = [
         Model: "Utilizing a publicly accessible patient dataset, we employ Principal Component Analysis (PCA) to discern critical factors for predicting strokes. By transforming the feature space from higher to lower dimensions, we gain insights into the relative significance of each input attribute.",
         btn_data: "Predict Now",
         image: "https://firebasestorage.googleapis.com/v0/b/healthpredict-pro.appspot.com/o/stroke-removebg-preview.png?alt=media&token=96d9ce0f-ea01-4292-9e3b-3cb187058336",
+        url:"/strokeform"
     },
     {
         Title: "Heart Attack Predictor",
         Aim: "Early Intervention Saves Lives Cardiovascular disease is the leading cause of death globally, claiming millions of lives each year as healthcare professionals can initiate preventive measures or administer life-saving treatment sooner, potentially saving lives.",
         Model: "Decision Tree algorithm which is 92% efficient is used in prediction of heart attack by using previously availaible dataset for the trainning of model",
         btn_data: "Predict Now",
-        image: "https://firebasestorage.googleapis.com/v0/b/healthpredict-pro.appspot.com/o/heartattack-removebg-preview.png?alt=media&token=f57c478a-1018-4db1-8b40-460c1e9e777b"
+        image: "https://firebasestorage.googleapis.com/v0/b/healthpredict-pro.appspot.com/o/heartattack-removebg-preview.png?alt=media&token=f57c478a-1018-4db1-8b40-460c1e9e777b",
+        url:"/heartAttackForm"
     },
     {
         Title: "Lung Cancer Predictor",
@@ -19,6 +21,7 @@ export const cardData = [
         Model: "We have achieved a 97% accuracy rate in diagnosing two common types of lung cancer by analyzing tissue sample slides.",
         btn_data: "Predict Now",
         image: "https://firebasestorage.googleapis.com/v0/b/healthpredict-pro.appspot.com/o/lungcancer-removebg-preview.png?alt=media&token=6f59c1e6-a4e1-43cd-afc0-826267956972",
+        url:"/cancerForm"
     }
 ]
 
